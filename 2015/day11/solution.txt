@@ -1,0 +1,5 @@
+I solved this one manually.
+
+Input was cqjxjnds
+Next valid password is cqjxxyzz
+After that is cqkaabcc
