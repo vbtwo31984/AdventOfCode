@@ -1,14 +1,30 @@
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Day7 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
+        Directory dirs = parseInput();
+        dirs.print(0);
 
+        List<Directory> allDirs = dirs.getAllDirs();
+        List<Integer> sizes = new ArrayList<>(allDirs.stream().map(Directory::size).toList());
+        int sum = sizes.stream().filter(s -> s <= 100000).mapToInt(s -> s).sum();
+        System.out.println(sum);
+
+        int total = 70000000;
+        int empty = total - dirs.size();
+        int needed = 30000000 - empty;
+        Collections.sort(sizes);
+        int firstThatFits = sizes.stream().sorted().filter(s -> s >= needed).findFirst().get();
+        System.out.println(firstThatFits);
     }
 
-    private static FileSystemNode parseInput() throws FileNotFoundException {
+    private static Directory parseInput() throws FileNotFoundException {
         Scanner scanner = new Scanner(new java.io.File("Year2022/src/day7.txt"));
         Directory root = new Directory("/", null);
         Directory current = root;
@@ -48,6 +64,7 @@ interface FileSystemNode {
     FileSystemNode parent();
 
     String name();
+    void print(int level);
 }
 
 class Directory implements FileSystemNode {
@@ -89,10 +106,39 @@ class Directory implements FileSystemNode {
             .filter(c -> c.getClass() == Directory.class && c.name().equals(child))
             .findFirst().orElseThrow();
     }
+
+    @Override
+    public void print(int level) {
+        for(int i = 0; i < level; i++) {
+            System.out.print("  ");
+        }
+        System.out.println("- " + name);
+        for(FileSystemNode child : children) {
+            child.print(level + 1);
+        }
+    }
+
+    public List<Directory> getAllDirs(){
+        List<Directory> dirs = new ArrayList<>();
+        dirs.add(this);
+        for(FileSystemNode child : children) {
+            if(child.getClass() == Directory.class) {
+                dirs.addAll(((Directory) child).getAllDirs());
+            }
+        }
+        return dirs;
+    }
 }
 
 record File(String name, int size, FileSystemNode parent) implements FileSystemNode {
     @Override
     public void addChild(FileSystemNode child) {
+    }
+
+    public void print(int level) {
+        for(int i = 0; i < level; i++) {
+            System.out.print("  ");
+        }
+        System.out.println("- " + name + " (" + size + ")");
     }
 }
