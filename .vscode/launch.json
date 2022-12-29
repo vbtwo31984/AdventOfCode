@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Launch Day9",
+            "request": "launch",
+            "mainClass": "Day9",
+            "projectName": "AdventOfCode_f45b1746"
+        },
+        {
             "name": "Listen for Xdebug",
             "type": "php",
             "request": "launch",
