@@ -6,6 +6,11 @@ import java.util.Scanner;
 
 public class Day10 {
     public static void main(String[] args) throws FileNotFoundException {
+        part1();
+        part2();
+    }
+
+    private static void part1() throws FileNotFoundException {
         Scanner scanner = new Scanner(new File("Year2022/src/day10.txt"));
 
         int cycle = 1;
@@ -32,5 +37,36 @@ public class Day10 {
             }
         }
         System.out.println("Part 1: " + signalStrengths);
+    }
+
+    private static void part2() throws FileNotFoundException {
+        Scanner scanner = new Scanner(new File("Year2022/src/day10.txt"));
+
+        int cycle = 0;
+        int register = 1;
+
+        while (scanner.hasNextLine()) {
+            print(register, cycle);
+
+            String line = scanner.nextLine();
+            if (line.equalsIgnoreCase("noop")) {
+                cycle++;
+            } else {
+                int add = Integer.parseInt(line.substring(5));
+                print(register, cycle + 1);
+                register += add;
+                cycle += 2;
+            }
+        }
+    }
+
+    private static void print(int register, int cycle) {
+        if (cycle % 40 == 0)
+            System.out.println();
+        if (Math.abs(register - cycle % 40) <= 1) {
+            System.out.print("🁢");
+        } else {
+            System.out.print(" ");
+        }
     }
 }
