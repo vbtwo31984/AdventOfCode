@@ -13,6 +13,8 @@ class Day7:
         return nums
     
     def is_valid(self, total, numbers, allow_concat = False):
+        if numbers[0] >= total:
+            return False
         sum = numbers[0] + numbers[1]
         product = numbers[0] * numbers[1]
         concat = int(str(numbers[0]) + str(numbers[1]))
