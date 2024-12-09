@@ -1,8 +1,9 @@
 import sys
 import importlib
+import time
 sys.path.insert(0, 'year2024')
 
-print("Year 2024   Part 1     Part 2 |             Part 1     Part 2 |             Part 1     Part 2 |             Part 1     Part 2 |             Part 1     Part 2")
+print("Year 2024        Part 1      Time           Part 2     Time")
 for day in range(1, 26):
     print(f"Day {day:2}: ", end="")
 
@@ -14,9 +15,15 @@ for day in range(1, 26):
         input = f.read()
 
     day_instance = day_class(input)
-    print(f"{day_instance.part1():10} {day_instance.part2():10} ", end="")
 
-    if day % 5 == 0:
-        print()
-    else:
-        print("| ", end="")
+    start_1 = time.time()
+    part1 = day_instance.part1()
+    end_1 = time.time()
+    time_1 = end_1 - start_1
+    print(f"{part1:15}  {time_1:8.5f}", end="")
+
+    start_2 = time.time()
+    part2 = day_instance.part2()
+    end_2 = time.time()
+    time_2 = end_2 - start_2
+    print(f"  {part2:15}  {time_2:8.5f}")
