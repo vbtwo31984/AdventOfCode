@@ -31,7 +31,7 @@ class TestDay16(unittest.TestCase):
 
     def test_part2(self):
         result = self.day16_instance.part2()
-        self.assertEqual(result, 0)
+        self.assertEqual(result, 64)
 
 if __name__ == '__main__':
     unittest.main()
