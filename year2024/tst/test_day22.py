@@ -29,7 +29,7 @@ class TestDay22(unittest.TestCase):
 
     def test_part2(self):
         result = self.day22_instance.part2()
-        self.assertEqual(result, 0)
+        self.assertEqual(result, 23)
 
 if __name__ == '__main__':
     unittest.main()
