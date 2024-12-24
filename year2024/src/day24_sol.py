@@ -1,4 +1,3 @@
-import sys
 import operator
 
 with open("../input/day24.txt") as f:
