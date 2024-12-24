@@ -1,5 +1,5 @@
 from collections import defaultdict
-
+import networkx as nx
 
 class Day23:
     def __init__(self, input):
@@ -28,6 +28,21 @@ class Day23:
         triplets = self.get_triplets(connections)
         triplets_starting_with_t = {triplet for triplet in triplets if any(node.startswith("t") for node in triplet)}
         return len(triplets_starting_with_t)
+    
+    def get_graph(self):
+        g = nx.DiGraph().to_undirected()
+        lines = self.input.splitlines()
+        for line in lines:
+            a, b = line.split("-")
+            g.add_edge(a, b)
+        return g
+
+    def get_longest_cycle(self, graph):
+        cycle = sorted(nx.find_cliques(graph), key=len, reverse=True)[0]
+        return cycle
             
     def part2(self):
-        return 0
+        graph = self.get_graph()
+        cycle = self.get_longest_cycle(graph)
+        password = ",".join(sorted(cycle))
+        return password

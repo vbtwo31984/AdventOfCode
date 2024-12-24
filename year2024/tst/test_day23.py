@@ -47,7 +47,7 @@ td-yn"""
 
     def test_part2(self):
         result = self.day23_instance.part2()
-        self.assertEqual(result, 0)
+        self.assertEqual(result, "co,de,ka,ta")
 
 if __name__ == '__main__':
     unittest.main()
