@@ -7,6 +7,7 @@ Allows running any year/day combination with optional custom input files.
 import argparse
 import importlib
 import sys
+import time
 from pathlib import Path
 
 
@@ -63,12 +64,20 @@ def run_solution(year: int, day: int, input_file: str = None, part: int = None):
         
         # Run the solution(s)
         if part is None or part == 1:
+            start_time = time.time()
             result1 = solution.solve_part1()
+            end_time = time.time()
+            elapsed_ms = (end_time - start_time) * 1000
             print(f"Part 1: {result1}")
+            print(f"Part 1 took {elapsed_ms:.2f}ms to run")
         
         if part is None or part == 2:
+            start_time = time.time()
             result2 = solution.solve_part2()
+            end_time = time.time()
+            elapsed_ms = (end_time - start_time) * 1000
             print(f"Part 2: {result2}")
+            print(f"Part 2 took {elapsed_ms:.2f}ms to run")
             
     except Exception as e:
         print(f"Error running solution for year {year}, day {day}: {e}")
