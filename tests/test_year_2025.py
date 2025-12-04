@@ -108,3 +108,44 @@ class TestDay03:
         # Placeholder test - will need to be updated with actual puzzle
         result = day.solve_part2()
         assert result == 3121910778619
+
+
+class TestDay04:
+    """Test Day 4 solution."""
+
+    def get_input(self):
+        lines = """..@@.@@@@.
+@@@.@.@.@@
+@@@@@.@.@@
+@.@@@@..@.
+@@.@@@@.@@
+.@@@@@@@.@
+.@.@.@.@@@
+@.@@@.@@@@
+.@@@@@@@@.
+@.@.@@@.@.""".splitlines()
+        return [list(line) for line in lines]
+    
+    def test_solve_part1_sample(self):
+        """Test part 1 with sample input."""
+        # TODO: Add sample input and expected result when puzzle is implemented
+        from src.year_2025.day_04 import Day04
+        
+        day = Day04(input_file=None)
+        day.data = self.get_input()
+        
+        # Placeholder test - will need to be updated with actual puzzle
+        result = day.solve_part1()
+        assert result == 13
+    
+    def test_solve_part2_sample(self):
+        """Test part 2 with sample input."""
+        # TODO: Add sample input and expected result when puzzle is implemented
+        from src.year_2025.day_04 import Day04
+        
+        day = Day04(input_file=None)
+        day.data = self.get_input()
+        
+        # Placeholder test - will need to be updated with actual puzzle
+        result = day.solve_part2()
+        assert result == 43
