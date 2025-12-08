@@ -272,3 +272,55 @@ class TestDay07:
         # Placeholder test - will need to be updated with actual puzzle
         result = day.solve_part2()
         assert result == 40
+
+
+class TestDay08:
+    """Test Day 8 solution."""
+
+    def get_data(self):
+        return """162,817,812
+57,618,57
+906,360,560
+592,479,940
+352,342,300
+466,668,158
+542,29,236
+431,825,988
+739,650,466
+52,470,668
+216,146,977
+819,987,18
+117,168,530
+805,96,715
+346,949,466
+970,615,88
+941,993,340
+862,61,35
+984,92,344
+425,690,689""".splitlines()
+    
+    def test_solve_part1_sample(self):
+        """Test part 1 with sample input."""
+        # TODO: Add sample input and expected result when puzzle is implemented
+        from src.year_2025.day_08 import Day08
+        
+        day = Day08(input_file=None)
+        day.data = self.get_data()
+        day.distances = sorted(day.calculate_distance())
+        
+        # Placeholder test - will need to be updated with actual puzzle
+        result = day.solve_part1(10)
+        assert result == 40
+    
+    def test_solve_part2_sample(self):
+        """Test part 2 with sample input."""
+        # TODO: Add sample input and expected result when puzzle is implemented
+        from src.year_2025.day_08 import Day08
+        
+        day = Day08(input_file=None)
+        day.data = self.get_data()
+        day.distances = sorted(day.calculate_distance())
+        
+        # Placeholder test - will need to be updated with actual puzzle
+        result = day.solve_part2()
+        assert result == 25272
