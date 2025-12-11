@@ -390,8 +390,36 @@ class TestDay10:
         from src.year_2025.day_10 import Day10
         
         day = Day10(input_file=None)
-        day.data = ["sample", "input"]
+        day.data = self.get_data()
         
         # Placeholder test - will need to be updated with actual puzzle
         result = day.solve_part2()
+        assert result == 33
+
+
+class TestDay11:
+    """Test Day 11 solution."""
+    
+    def test_solve_part1_sample(self):
+        """Test part 1 with sample input."""
+        # TODO: Add sample input and expected result when puzzle is implemented
+        from src.year_2025.day_11 import Day11
+        
+        day = Day11(input_file=None)
+        day.data = ["sample", "input"]
+        
+        # Placeholder test - will need to be updated with actual puzzle
+        # result = day.solve_part1()
+        # assert result == expected_result
+    
+    def test_solve_part2_sample(self):
+        """Test part 2 with sample input."""
+        # TODO: Add sample input and expected result when puzzle is implemented
+        from src.year_2025.day_11 import Day11
+        
+        day = Day11(input_file=None)
+        day.data = ["sample", "input"]
+        
+        # Placeholder test - will need to be updated with actual puzzle
+        # result = day.solve_part2()
         # assert result == expected_result
